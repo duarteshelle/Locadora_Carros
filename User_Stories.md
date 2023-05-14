@@ -1,7 +1,6 @@
 User Story A{
 
-  Como usuário, quero ver carros disponíveis para alugar. 
-  Para de forma eficiente saber quais veículos posso mostrar aos clientes.
+  Como usuário, quero procurar carros disponíveis para poder alugar um veículo.
   
     Critérios de Aceitação{
     
@@ -46,39 +45,37 @@ User Story C{
     
       Excluir pedido do sistema.
     
-      Mostrar aviso do pedido cancelado com
-      sucesso.
+      Mostrar aviso do pedido cancelado com sucesso.
     }
+    
+}
     
  User Story D{
 
-  Como usuário da locadora. Quero poder consultar o histórico de carros que já aluguei. 
- Para poder ter acesso ao meu histórico de aluguéis na loja.
+  Como usuário da locadora, quero ver os carros que já aluguei para poder consultar o histórico de transações.
 
     Critérios de Aceitação{
 
-      Eu quero poder visualizar o histórico em ordem cronológica.
+      Botão de transações.
 
-      Eu quero poder filtrar por modelo ou ano.
+      Mostrar o histórico de pedidos em ordem cronológica.
 
-      Eu quero que contenha modelo, datas de início e termino e valor pago.
+      Filtrar por mês ou ano.
     }
-
-      Mostrar aviso do pedido cancelado com
-      sucesso.
+    
+}    
       
 User Story E{
 
- Como cliente da locadora. Eu quero poder ter um login para acessar minha conta. 
- Para que minhas informações fiquem seguras e não possam ser acessadas por qualquer um.
+ Como cliente da locadora, eu quero ter uma conta com login e senha para que minhas informações fiquem seguras e não possam ser acessadas por qualquer um.
 
     Critérios de Aceitação{
 
-      Eu quero que o login contenha chave de acesso (email) e senha.
+      Conta contenha chave de acesso (email) e senha.
 
-      Eu quero poder trocar a senha, por meio da chave de acesso em caso esquecer.
+      Poder trocar a senha, por meio da chave de acesso, em caso de esquecimento.
 
-      Eu quero poder ter acesso ao meu histórico com a loja através do login.
+      Conta vinculada aos dados do usuário.
     }
   
 }
