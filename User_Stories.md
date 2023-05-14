@@ -37,7 +37,7 @@ User Story B{
 User Story C{
 
   Como usuário, quero cancelar um pedido
-  porque disití de alugar um carro.
+  porque disistí de alugar um carro.
   
     Critérios de Aceitação{
   
@@ -76,6 +76,21 @@ User Story E{
       Poder trocar a senha, por meio da chave de acesso, em caso de esquecimento.
 
       Conta vinculada aos dados do usuário.
+    }
+  
+}
+
+User Story F{
+
+ Como um administrador da locadora, eu gostaria de poder gerenciar as reservas de veículos, para que eu possa garantir que os carros sejam alugados e retornados conforme o planejado.
+
+    Critérios de Aceitação{
+
+      Mostar todas as reservas em uma única lista.
+
+      Poder ver rapidamente se um veículo está disponível para locação.
+
+      O sistema permitir ao administrador receber notificações sobre reservas canceladas ou alterações feitas pelos clientes
     }
   
 }
