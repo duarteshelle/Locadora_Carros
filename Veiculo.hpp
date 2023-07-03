@@ -13,10 +13,6 @@ public:
   std::string cor;
   std::string placa;
   int ano;
-  std::string status;
-  std::string Status() {
-    
-  }
 
 private:
 
