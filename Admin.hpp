@@ -7,23 +7,15 @@
 #include <string>
 #include <vector>
 
-class Admin : public Conta {
+class Admin : public Conta
+{
 private:
     /* data */
 public:
     Admin();
     ~Admin();
 
-    void gerarRelatorio(const std::vector<Veiculo>& veiculos){}
-
+    void gerarRelatorio(const std::vector<Veiculo> &veiculos) {}
 };
-
-
-
-
-
-
-
-
 
 #endif
