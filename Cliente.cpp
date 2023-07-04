@@ -81,7 +81,7 @@ void Cliente::setEmail(const std::string &email)
 
 void Cliente::adicionarHistoricoCliente(const std::string &historicoCliente)
 {
-    this->historico.push_back(historicoCliente);
+    this->historicoCliente.push_back(historicoCliente);
 }
 
 std::vector<std::string> Cliente::getHistoricoCliente() const
