@@ -1,29 +1,27 @@
-#ifndef CONTA_H
-#define CONTA_H
+#ifndef CARRO_H
+#define CARRO_H
+
 
 #include <iostream>
 #include <string>
 
-class Conta
-{
-protected:
-    int cpf;
+#include "Veiculo.hpp"
 
+class Carro : public Veiculo{
 private:
-    std::string senha;
-
+    
 public:
-    std::string nome;
+    bool arCondicionado;
+    bool marchaAutomatica;
+    bool motorFlex;
+    bool disponivel = true;
 
-    Conta();
-    Conta(std::string nome, int cpf, std::string senha);
-    ~Conta();
 
-    int getCPF() const;
-    void setCPF(int cpf);
 
-    std::string getSenha() const;
-    void setSenha(const std::string &senha);
+    Carro(std::string modelo, std::string marca, int ano, std::string placa, double valorDiaria);
+    ~Carro();
 };
+
+
 
 #endif
