@@ -12,13 +12,13 @@ private:
     std::vector<Carro> carros;
 
 public:
-    Locadora();
-
-    void adicionarCarro(const Carro& carro);
+    void adicionarCarro(Carro carro);
     void listarCarrosDisponiveis();
-    void alugarCarro(const std::string& modelo);
-    void devolverCarro(const std::string& modelo);
-    void fazerReserva(const std::string& dataInicio, const std::string& dataFim);
+    void alugarCarro(std::string modelo);
+    void devolverCarro(std::string modelo);
+
+    Locadora();
+    ~Locadora();
 };
 
 #endif
