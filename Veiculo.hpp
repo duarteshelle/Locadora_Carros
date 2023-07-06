@@ -4,18 +4,21 @@
 #include <iostream>
 #include <string>
 
-class Veiculo {
-
-public:
-  std::string marca;
-  std::string tipo;
-  std::string modelo;
-  std::string cor;
-  std::string placa;
-  int ano;
-
+class Veiculo{
 private:
+    
+public:
+    Veiculo();
+    ~Veiculo();
+    std::string marca;
+    std::string tipo;
+    std::string modelo;
+    std::string cor;
+    std::string placa;
+    int ano;
 
 };
+
+
 
 #endif
