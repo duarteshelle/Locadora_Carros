@@ -46,6 +46,8 @@ public:
 
     void adicionarHistoricoCliente(const std::string &historicoCliente);
     std::vector<std::string> getHistoricoCliente() const;
+
+    std::vector<Cliente> clientes;
 };
 
 #endif
