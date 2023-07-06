@@ -1,11 +1,11 @@
 #include "Cliente.hpp"
 
-Cliente::Cliente(std::string nome, std::string dataNascimento, std::string cpf, std::string email,
+Cliente::Cliente(std::string nome, std::string dataNascimento, std::string email,
                  std::string senha, std::string endereco, std::string telefone,
                  std::string carteiraMotorista, std::string carteiraPagamento)
-    : Conta(nome, cpf, senha), endereco(endereco), telefone(telefone),
+    : Conta(nome, 0, senha), endereco(endereco), telefone(telefone),
       carteiraMotorista(carteiraMotorista), carteiraPagamento(carteiraPagamento),
-      dataNascimento(dataNascimento), cpf(cpf), email(email) {}
+      dataNascimento(dataNascimento), email(email) {}
 
 Cliente::~Cliente() {}
 
@@ -57,16 +57,6 @@ std::string Cliente::getDataNascimento() const
 void Cliente::setDataNascimento(const std::string &dataNascimento)
 {
     this->dataNascimento = dataNascimento;
-}
-
-std::string Cliente::getCPF() const
-{
-    return cpf;
-}
-
-void Cliente::setCPF(const std::string &cpf)
-{
-    this->cpf = cpf;
 }
 
 std::string Cliente::getEmail() const

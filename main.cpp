@@ -36,29 +36,171 @@ bool possuiAr, possuirMarcha, possuirMotorFlex;
 
         switch (opcao) {
             case 1:
-                // Autenticação do Cliente
-                std::cout << "===== Autenticação do Cliente =====" << std::endl;
-                std::cout << "CPF: ";
-                std::cin >> cpf;
-                std::cout << "Senha: ";
-                std::cin >> senha;
+                // Menu do Cliente
+                std::cout << "===== Menu do Cliente =====" << std::endl;
+                int opcaoCliente;
 
-                // Verificar autenticação do cliente
-                bool clienteAutenticado = false;
-                for (const auto& cliente : cliente.clientes) {
-                    if (cliente.getCPF() == cpf && cliente.senha == senha) {
-                        clienteAutenticado = true;
-                        break;
+                do {
+                    std::cout << "Selecione uma opção:" << std::endl;
+                    std::cout << "1. Criar conta" << std::endl;
+                    std::cout << "2. Autenticação" << std::endl;
+                    std::cout << "0. Voltar para a página inicial" << std::endl;
+                    std::cout << "==================================" << std::endl;
+                    std::cout << "Opção: ";
+                    std::cin >> opcaoCliente;
+
+                    switch (opcaoCliente) {
+                        case 1:
+                            std::cout << "===== Criar Conta =====" << std::endl;
+                            std::cout << "Endereço: ";
+                            std::cin.ignore();
+                            std::getline(std::cin, novoEndereco);
+                            std::cout << "Telefone: ";
+                            std::getline(std::cin, novoTelefone);
+                            std::cout << "Carteira de Motorista: ";
+                            std::getline(std::cin, novaCarteiraMotorista);
+                            std::cout << "Data de Nascimento: ";
+                            std::getline(std::cin, novaDataNascimento);
+                            std::cout << "Email: ";
+                            std::getline(std::cin, novoEmail);
+                            std::cout << "CPF: ";
+                            std::cin >> novoCPF;
+                            std::cout << "Senha: ";
+                            std::cin >> novaSenha;
+
+                            cliente.clientes.push_back(Cliente("", novaDataNascimento, novoCPF, novoEmail, novaSenha, novoEndereco, novoTelefone, novaCarteiraMotorista, ""));
+                            std::cout << "Conta criada com sucesso!" << std::endl;
+                            break;
+                        case 2:
+                            std::cout << "===== Autenticação do Cliente =====" << std::endl;
+                            std::cout << "CPF: ";
+                            std::cin >> cpf;
+                            std::cout << "Senha: ";
+                            std::cin >> senha;
+
+                            // Verificar autenticação do cliente
+                            bool clienteAutenticado = false;
+                            for (const auto& cliente : cliente.clientes) {
+                                if (cliente.getCPF() == cpf && cliente.getSenha() == senha) {
+                                    clienteAutenticado = true;
+                                    break;
+                                }
+                            }
+
+                            if (clienteAutenticado) {
+                                // Menu options for the authenticated client
+                                int opcaoMenuCliente;
+                                do {
+                                    std::cout << "===== Menu do Cliente =====" << std::endl;
+                                    std::cout << "Selecione uma opção:" << std::endl;
+                                    std::cout << "1. Adicionar cartão de crédito" << std::endl;
+                                    std::cout << "2. Remover cartão de crédito" << std::endl;
+                                    std::cout << "3. Pesquisar carros disponíveis" << std::endl;
+                                    std::cout << "4. Fazer uma reserva" << std::endl;
+                                    std::cout << "5. Ver custo da reserva" << std::endl;
+                                    std::cout << "6. Escolher cartão de crédito" << std::endl;
+                                    std::cout << "7. Confirmar reserva" << std::endl;
+                                    std::cout << "8. Alterar senha" << std::endl;
+                                    std::cout << "0. Voltar para a página inicial" << std::endl;
+                                    std::cout << "==================================" << std::endl;
+                                    std::cout << "Opção: ";
+                                    std::cin >> opcaoMenuCliente;
+
+                                    switch (opcaoMenuCliente) {
+                                        case 1:
+                                            std::cout << "===== Adicionar Cartão de Crédito =====" << std::endl;
+                                            std::cout << "Digite o número do cartão de crédito: ";
+                                            std::string numeroCartao;
+                                            std::cin >> numeroCartao;
+
+                                            // Add cartão do cliente
+                                            cliente.setCarteiraPagamento(numeroCartao);
+                                            std::cout << "Cartão de crédito adicionado com sucesso!" << std::endl;
+                                            break;
+                                        case 2:
+                                            std::cout << "===== Remover Cartão de Crédito =====" << std::endl;
+                                            std::cout << "Lista de Cartões de Crédito:" << std::endl;
+
+                                            // Recebe o numero do cliente
+                                            std::string numeroCartao = cliente.getCarteiraPagamento();
+
+                                            if (numeroCartao.empty()) {
+                                                std::cout << "Não há cartões de crédito cadastrados na conta." << std::endl;
+                                            } else {
+                                                std::cout << "Número do Cartão de Crédito: " << numeroCartao << std::endl;
+                                                std::cout << "Deseja remover este cartão? (S/N): ";
+                                                std::string resposta;
+                                                std::cin >> resposta;
+
+                                                if (resposta == "S" || resposta == "s") {
+                                                    // Remove o cartão
+                                                    cliente.setCarteiraPagamento("");
+                                                    std::cout << "Cartão de crédito removido com sucesso!" << std::endl;
+                                                } else {
+                                                    std::cout << "Operação cancelada." << std::endl;
+                                                }
+                                            }
+                                            break;
+                                        case 3:
+                                            std::cout << "===== Pesquisar Carros Disponíveis =====" << std::endl;
+                                            locadora.listarCarrosDisponiveis();
+                                            break;
+                                        case 4:
+                                            std::cout << "===== Fazer uma Reserva =====" << std::endl;
+                                            // Faz a reserva utilizando a classe Locadora
+                                            std::string dataInicio, dataFim;
+                                            std::cout << "Digite a data de início da reserva (DD/MM/AAAA): ";
+                                            std::cin >> dataInicio;
+                                            std::cout << "Digite a data de fim da reserva (DD/MM/AAAA): ";
+                                            std::cin >> dataFim;
+                                            locadora.fazerReserva(dataInicio, dataFim);
+                                            break;
+                                        case 5:
+                                            std::cout << "===== Ver Custo da Reserva =====" << std::endl;
+                                            // Implementar
+                                            break;
+                                        case 6:
+                                            std::cout << "===== Escolher Cartão de Crédito =====" << std::endl;
+                                            // Implementar
+                                            break;
+                                        case 7:
+                                            std::cout << "===== Confirmar Reserva =====" << std::endl;
+                                            // Implementar
+                                            break;
+                                        case 8:
+                                            std::cout << "===== Alterar Senha =====" << std::endl;
+                                            std::cout << "Nova senha: ";
+                                            std::cin >> novaSenha;
+
+                                            // Update the client's password
+                                            for (auto& cliente : cliente.clientes) {
+                                                if (cliente.getCPF() == cpf) {
+                                                    cliente.setSenha(novaSenha);
+                                                    break;
+                                                }
+                                            }
+                                            std::cout << "Senha alterada com sucesso!" << std::endl;
+                                            break;
+                                        case 0:
+                                            std::cout << "Voltando para a página inicial..." << std::endl;
+                                            break;
+                                        default:
+                                            std::cout << "Opção inválida. Tente novamente." << std::endl;
+                                            break;
+                                    }
+                                } while (opcaoMenuCliente != 0);
+                            } else {
+                                std::cout << "Autenticação falhou. CPF ou senha incorretos." << std::endl;
+                            }
+                            break;
+                        case 0:
+                            std::cout << "Voltando para a página inicial..." << std::endl;
+                            break;
+                        default:
+                            std::cout << "Opção inválida. Tente novamente." << std::endl;
+                            break;
                     }
-                }
-
-                if (clienteAutenticado) {
-                    // Menu do Cliente
-                    std::cout << "===== Menu do Cliente =====" << std::endl;
-                    // Implemente as opções do menu para o cliente aqui
-                } else {
-                    std::cout << "Autenticação falhou. CPF ou senha incorretos." << std::endl;
-                }
+                } while (opcaoCliente != 0);
                 break;
             case 2:
                 
@@ -70,6 +212,7 @@ bool possuiAr, possuirMarcha, possuirMotorFlex;
                 std::cout << "3. Alugar um carro" << std::endl;
                 std::cout << "4. Devolver carro" << std::endl;
                 std::cout << "5. Cadastrar cliente" << std::endl;
+                std::cout << "6. Alterar senha do administrador" << std::endl;
                 std::cout << "0. Voltar para a página inicial" << std::endl;
                 std::cout << "=================================" << std::endl;
                 std::cout << "Opção: ";
@@ -127,6 +270,14 @@ bool possuiAr, possuirMarcha, possuirMotorFlex;
                         //std::cin >> novoAno;
                         //locadora.adicionarCarro(Carro(novoModelo, novaMarca, novoAno));
                         std::cout << "Cliente cadastrado com sucesso!" << std::endl;
+                        break;
+                    case 5:
+                        std::cout << "===== Alterar Senha do Administrador =====" << std::endl;
+                        std::cout << "Nova senha: ";
+                        std::cin >> novaSenha;
+                        //muudar senha do adm
+                        admin.setSenha(novaSenha);
+                        std::cout << "Senha do administrador alterada com sucesso!" << std::endl;
                         break;    
                     case 0:
                         std::cout << "Voltando para a página inicial..." << std::endl;
