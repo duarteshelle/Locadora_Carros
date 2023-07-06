@@ -1,8 +1,19 @@
 #include "Carro.hpp"
-#include <string>
 
-std::string Status()
-{
-  std::cin >> status;
-  return status;
+Carro::Carro(std::string modelo, std::string marca, int ano, int placa){
+    modelo = modelo;
+    marca = marca;
+    ano = ano;
+    placa = placa;
+
+    arCondicionado = true;
+    marchaAutomatica = true;
+    motorFlex = true;
+    disponivel = true;
 }
+
+
+Carro::~Carro(){}
+
+
+
